@@ -11,10 +11,40 @@
 <html>
 <head>
     <title>Title</title>
+    <script type="application/javascript" src="/js/jquery3_6/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<c:forEach var="book" items="${library}" varStatus="status">
-    <p>${book.pages} ${book.name}</p><br>
-</c:forEach>
+<div>
+    <h3>${message} </h3>
+    <table id="bookOverview">
+        <thead>
+        <tr>
+        <th>book name</th>
+        <th>pages</th>
+        </tr>
+        </thead>
+        <tbody id="bookOverviewTBody">
+        <c:forEach var="book" items="${library}" varStatus="status">
+            <tr>
+                <input type="hidden" name="bookIdName" id="bookID_${book.id}" value="${book.id}"/>
+                 <td>${book.pages}</td>
+                <td>${book.name}</td>
+                <td><button onclick="deleteRecord(this)">smaz</button></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <H3>Add book</H3>
+    <form method="POST" action="/api/bookService/addBook" id="bookAddFormID">
+        book name: <input type="text" name="bookName">
+        <br>
+        pages: <input type="number" name="pages">
+        <input type="submit" >
+    </form>
+</div>
 </body>
+<script type="application/javascript" src="/js/bookSupport.js"></script>
 </html>

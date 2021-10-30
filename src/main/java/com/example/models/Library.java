@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @XmlRootElement(name = "library")
@@ -20,5 +21,12 @@ public class Library {
 
     public List<Book> getContent() {
         return content;
+    }
+
+    public int getNewId() {
+        if (content.size() == 0) {
+            return 1;
+        }
+        return content.stream().max(Comparator.comparing(Book::getId)).get().getId() + 1;
     }
 }
