@@ -19,17 +19,22 @@
     <table id="bookOverview">
         <thead>
         <tr>
-        <th>book name</th>
-        <th>pages</th>
+            <th>pages</th>
+            <th>book name</th>
         </tr>
         </thead>
         <tbody id="bookOverviewTBody">
         <c:forEach var="book" items="${library}" varStatus="status">
             <tr>
                 <input type="hidden" name="bookIdName" id="bookID_${book.id}" value="${book.id}"/>
-                 <td>${book.pages}</td>
-                <td>${book.name}</td>
-                <td><button onclick="deleteRecord(this)">smaz</button></td>
+                <td><input type="number" name="bookPages" value="${book.bookPages}"> </td>
+                <td><input type="text" name="bookName" value="${book.bookName}"></td>
+                <td>
+                    <button onclick="deleteRecord(this)">smaz</button>
+                </td>
+                <td>
+                    <button onclick="editRecord(this)">ulož</button>
+                </td>
             </tr>
         </c:forEach>
         </tbody>
@@ -41,8 +46,8 @@
     <form method="POST" action="/api/bookService/addBook" id="bookAddFormID">
         book name: <input type="text" name="bookName">
         <br>
-        pages: <input type="number" name="pages">
-        <input type="submit" >
+        pages: <input type="number" name="bookPages">
+        <input type="submit">
     </form>
 </div>
 </body>

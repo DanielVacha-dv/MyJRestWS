@@ -23,7 +23,7 @@ public class MyJsonService {
         Library dbFake = MyDBFake.getDbFake();
         int size = dbFake.getContent().size();
         Book n = new Book();
-        n.setPages(size + 1);
+        n.setBookPages(size + 1);
         dbFake.getContent().add(n);
         return Response.status(200).entity(dbFake).build();
     }
@@ -35,8 +35,8 @@ public class MyJsonService {
     public Response  helloName(@QueryParam("name") final String name, @QueryParam("pages") final int pages) {
         Library dbFake = MyDBFake.getDbFake();
         Book n = new Book();
-        n.setPages(pages);
-        n.setName(name);
+        n.setBookPages(pages);
+        n.setBookName(name);
         dbFake.getContent().add(n);
         return Response.status(200).entity(dbFake).build();
     }

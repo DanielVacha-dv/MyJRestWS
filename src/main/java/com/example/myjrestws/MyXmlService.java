@@ -21,7 +21,7 @@ public class MyXmlService {
         Library dbFake = MyDBFake.getDbFake();
         int size = dbFake.getContent().size();
         Book n = new Book();
-        n.setPages(size + 1);
+        n.setBookPages(size + 1);
         dbFake.getContent().add(n);
         return dbFake;
     }

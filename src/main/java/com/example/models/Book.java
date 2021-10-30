@@ -1,5 +1,7 @@
 package com.example.models;
 
+import org.jboss.resteasy.annotations.jaxrs.FormParam;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -10,28 +12,31 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Book {
 
     @XmlAttribute
+    @FormParam("bookIdName")
     private int id;
 
     @XmlAttribute
-    private int pages;
+    @FormParam("bookPages")
+    private int bookPages;
 
     @XmlAttribute
-    private String name;
+    @FormParam("bookName")
+    private String bookName;
 
-    public String getName() {
-        return name;
+    public String getBookName() {
+        return bookName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
     }
 
-    public int getPages() {
-        return pages;
+    public int getBookPages() {
+        return bookPages;
     }
 
-    public void setPages(int pages) {
-        this.pages = pages;
+    public void setBookPages(int bookPages) {
+        this.bookPages = bookPages;
     }
 
     public int getId() {
