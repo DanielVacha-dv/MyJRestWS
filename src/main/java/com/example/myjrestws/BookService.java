@@ -55,6 +55,7 @@ public class BookService {
     @Formatted
     @Path("/deleteBook")
     public Response deleteBook(@QueryParam("bookIdName") final int id) {
+
         Library dbFake = MyDBFake.getDbFake();
         Book b = dbFake.getContent().stream().filter(el -> el.getId() == id).findFirst().orElse(null);
         if (b != null) {
